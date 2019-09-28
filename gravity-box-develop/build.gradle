@@ -1,0 +1,86 @@
+/*
+ * This file is part of Gravity Box.
+ *
+ * Gravity Box is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Gravity Box is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Gravity Box.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    google()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+  }
+  dependencies {
+    classpath "com.android.tools.build:gradle:$androidPluginVersion"
+    classpath "com.github.jengelman.gradle.plugins:shadow:$shadowVersion"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    classpath "com.mobidevelop.robovm:robovm-gradle-plugin:$robovmVersion"
+  }
+}
+
+allprojects {
+  apply plugin: 'eclipse'
+  apply plugin: 'idea'
+}
+
+configure(subprojects - project(':android')) {
+  apply plugin: 'com.github.johnrengelman.shadow'
+  apply plugin: 'java'
+  apply plugin: 'kotlin'
+  sourceCompatibility = 1.6
+}
+
+subprojects {
+  version = '1.1.4'
+  ext.appName = 'gravity-box'
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    google()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+  }
+}
+
+// Clearing Eclipse project data in root folder:
+tasks.eclipse.doLast {
+  delete '.project'
+  delete '.classpath'
+  delete '.settings/'
+}
+
+@SuppressWarnings("LibGDXGradleTestId")
+def getLocalProperty(String propertyName) {
+    def propsFile = rootProject.file('local.properties')
+    if (propsFile.exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
+        return props[propertyName]
+    } else {
+        if (propertyName == "admob.appid"){
+            // Debug App ID
+            return "ca-app-pub-3940256099942544~3347511713"
+        } else if (propertyName == "admob.interstitial.adunitid"){
+            // Debug interstitial ad unit ID
+            return "ca-app-pub-3940256099942544/1033173712"
+        } else if (propertyName == "admob.rewarded.adunitid"){
+            // Debug rewarded ad unit ID
+            return "ca-app-pub-3940256099942544/5224354917"
+        } else {
+            return ""
+        }
+    }
+}

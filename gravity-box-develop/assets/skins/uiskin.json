@@ -1,0 +1,78 @@
+//noinspection AbbrClass
+{
+  com.badlogic.gdx.graphics.Color: {
+    text-gold: { r: 0.819, g: 0.647, b: 0.180 }
+  }
+  com.badlogic.gdx.graphics.g2d.BitmapFont: {
+    regular: {
+      file: regular.fnt
+    }
+    semi-bold: {
+      file: semi-bold.fnt
+    }
+  }
+  com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+    regular: {
+      font: regular
+    }
+    semi-bold: {
+      font: semi-bold
+    }
+  }
+  com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+    simple-button: {
+    }
+    small-button: {
+      up: small-button,
+      down: small-button
+    }
+    small-round-button: {
+      up: small-round-button
+      down: small-round-button
+    }
+    checkbox: {
+      up: empty-checkbox
+      down: empty-checkbox
+    }
+    color-round-button: {
+      up: full-round-button
+      down: full-round-button
+    }
+    white-full-round-button: {
+      up: full-round-button
+      down: full-round-button
+    }
+    gray-full-round-button: {
+      up: full-round-button
+      down: full-round-button
+    }
+    empty-round-button: {
+      up: empty-round-button
+      down: empty-round-button
+    }
+    menu-button: {
+      up: menu-icon
+      down: menu-icon
+    }
+    left-button: {
+      up: left-button
+      down: left-button
+    }
+    right-button: {
+      up: right-button
+      down: right-button
+    }
+    double-left-button: {
+      up: double-left-button
+      down: double-left-button
+    }
+    double-right-button: {
+      up: double-right-button
+      down: double-right-button
+    }
+    long-button: {
+      up: long-button
+      down: long-button
+    }
+  }
+}

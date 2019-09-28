@@ -1,0 +1,120 @@
+-verbose
+
+-dontwarn kotlin.**
+-dontnote kotlin.**
+-dontwarn org.objectweb.**
+-dontwarn org.lwjgl.**
+-dontwarn com.badlogic.**
+-dontnote com.badlogic.**
+-dontwarn com.google.android.gms.**
+-dontnote com.google.android.gms.**
+-dontwarn android.support.**
+-dontwarn ro.luca1152.gravitybox.**
+
+# Java
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keepclassmembers class * extends java.lang.Enum {
+    <fields>;
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# Kotlin
+-keep class kotlin.reflect.jvm.internal.** { *; }
+
+# LWJGL
+-keep class org.lwjgl.**
+-keepclassmembers class org.lwjgl.** { *; }
+
+# LibGDX
+-keep public class com.badlogic.gdx.Gdx {
+    public protected *;
+}
+-keep public class com.badlogic.gdx.Application {
+    public protected *;
+}
+
+# Box2D
+-keepclassmembers class com.badlogic.gdx.physics.box2d.World {
+   boolean contactFilter(long, long);
+   void beginContact(long);
+   void endContact(long);
+   void preSolve(long, long);
+   void postSolve(long, long);
+   boolean reportFixture(long);
+   float reportRayFixture(long, float, float, float, float, float);
+}
+
+# Desktop
+-keep class ro.luca1152.gravitybox.desktop.DesktopLauncher {
+    public static void main(java.lang.String[]);
+}
+
+# Android
+-keepclassmembers class com.badlogic.gdx.backends.android.AndroidInput* {
+   <init>(com.badlogic.gdx.Application, android.content.Context, java.lang.Object, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration);
+}
+-keep public class com.badlogic.gdx.backends.android.AndroidEventListener {
+    public *;
+}
+-keep public class com.badlogic.gdx.backends.android.AndroidApplication {
+    public *;
+}
+
+# Skin serialization
+-keep public class com.badlogic.gdx.graphics.Color {
+    public *;
+}
+-keep public class com.badlogic.gdx.graphics.g2d.BitmapFont {
+    public *;
+}
+-keep public class com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle {
+    public *;
+}
+-keep public class com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle {
+    public *;
+}
+
+# Maps serialization
+-keepattributes Signature # Keep type parameters
+-keep class ro.luca1152.gravitybox.utils.assets.json.** { *; }
+-keep class ro.luca1152.gravitybox.utils.assets.loaders.MapPack { *; }
+-keep class ro.luca1152.gravitybox.utils.assets.loaders.MapPackFactory { *; }
+
+# IAP
+-keep class com.android.vending.billing.**
+-keep class com.sec.android.iap.**
+-keep public class com.badlogic.gdx.pay.android.IAP {
+    public *;
+}
+-keep public class com.badlogic.gdx.pay.android.openiab.PurchaseManagerAndroidOpenIAB {
+    public *;
+}
+-keep public class com.badlogic.gdx.pay.android.googleplay.AndroidGooglePlayPurchaseManager {
+    public *;
+}
+
+# Ads
+-keep class com.google.ads.**
+-keep class com.google.protobuf.**
+-keepattributes *Annotation* # For mediation
+
+# Google Play Services
+-keep class com.google.android.gms.** {
+    public *;
+}
+-keep class * extends java.util.ListResourceBundle {
+   protected java.lang.Object[][] getContents();
+}
+-keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+   public static final *** NULL;
+}
+-keepnames @com.google.android.gms.common.annotation.KeepName class *
+-keepclassmembernames class * {
+   @com.google.android.gms.common.annotation.KeepName *;
+}
+-keepnames class * implements android.os.Parcelable {
+   public static final ** CREATOR;
+}

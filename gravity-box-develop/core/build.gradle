@@ -1,0 +1,39 @@
+/*
+ * This file is part of Gravity Box.
+ *
+ * Gravity Box is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Gravity Box is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Gravity Box.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
+
+dependencies {
+    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+    api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    api "io.github.libktx:ktx-inject:$ktxVersion"
+    api "io.github.libktx:ktx-actors:$ktxVersion"
+    api "io.github.libktx:ktx-app:$ktxVersion"
+    api "io.github.libktx:ktx-assets:$ktxVersion"
+    api "io.github.libktx:ktx-collections:$ktxVersion"
+    api "io.github.libktx:ktx-graphics:$ktxVersion"
+    api "io.github.libktx:ktx-log:$ktxVersion"
+    api "io.github.libktx:ktx-math:$ktxVersion"
+    api "io.github.libktx:ktx-scene2d:$ktxVersion"
+    api "com.badlogicgames.gdxpay:gdx-pay-client:$gdxPayVersion"
+    api "com.google.android.gms:play-services-ads:$playServicesAdsVersion"
+    api "com.flurry.android:analytics:$flurryVersion"
+}
+        
